@@ -1,0 +1,24 @@
+{
+  "id": "comment-123",
+  "status": "current",
+  "title": "",
+  "pageId": "12345",
+  "parentCommentId": null,
+  "version": {
+    "number": 1,
+    "message": "",
+    "minorEdit": false,
+    "authorId": "user-123",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  "body": {
+    "storage": {
+      "representation": "storage",
+      "value": ""
+    },
+    "atlas_doc_format": {
+      "representation": "atlas_doc_format",
+      "value": ""
+    }
+  }
+}

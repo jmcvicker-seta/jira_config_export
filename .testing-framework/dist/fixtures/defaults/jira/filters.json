@@ -1,0 +1,27 @@
+[
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/filter/10000",
+    "id": "10000",
+    "name": "My Open Issues",
+    "owner": {
+      "self": "https://test-site.atlassian.net/rest/api/3/user?accountId=test-account-id",
+      "accountId": "test-account-id",
+      "avatarUrls": {
+        "48x48": "https://test-site.atlassian.net/avatar/default",
+        "24x24": "https://test-site.atlassian.net/avatar/default",
+        "16x16": "https://test-site.atlassian.net/avatar/default",
+        "32x32": "https://test-site.atlassian.net/avatar/default"
+      },
+      "displayName": "Test User",
+      "active": true
+    },
+    "jql": "assignee = currentUser() AND resolution = Unresolved",
+    "viewUrl": "https://test-site.atlassian.net/issues/?filter=10000",
+    "searchUrl": "https://test-site.atlassian.net/rest/api/3/search/jql?jql=assignee%20%3D%20currentUser%28%29%20AND%20resolution%20%3D%20Unresolved",
+    "favourite": true,
+    "favouritedCount": 1,
+    "sharePermissions": [],
+    "editPermissions": [],
+    "isWritable": true
+  }
+]

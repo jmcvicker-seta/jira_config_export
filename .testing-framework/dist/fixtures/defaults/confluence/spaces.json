@@ -1,0 +1,20 @@
+{
+  "results": [
+    {
+      "id": "65536",
+      "key": "TEST",
+      "name": "Test Space",
+      "type": "global",
+      "status": "current",
+      "authorId": "test-account-id",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "homepageId": "12345",
+      "_links": {
+        "webui": "/spaces/TEST"
+      }
+    }
+  ],
+  "_links": {
+    "next": null
+  }
+}

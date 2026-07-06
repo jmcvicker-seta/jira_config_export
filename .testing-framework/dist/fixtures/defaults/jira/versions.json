@@ -1,0 +1,11 @@
+[
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/version/10000",
+    "id": "10000",
+    "description": "Initial release",
+    "name": "1.0.0",
+    "archived": false,
+    "released": false,
+    "projectId": 10000
+  }
+]

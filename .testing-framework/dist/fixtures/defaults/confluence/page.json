@@ -1,0 +1,31 @@
+{
+  "id": "12345",
+  "status": "current",
+  "title": "Sample Page",
+  "spaceId": "65536",
+  "parentId": "12344",
+  "parentType": "page",
+  "position": 1,
+  "authorId": "test-account-id",
+  "ownerId": "test-account-id",
+  "lastOwnerId": "test-account-id",
+  "createdAt": "2024-01-15T10:30:00.000Z",
+  "version": {
+    "number": 1,
+    "message": "",
+    "minorEdit": false,
+    "authorId": "test-account-id",
+    "createdAt": "2024-01-15T10:30:00.000Z"
+  },
+  "body": {
+    "atlas_doc_format": {
+      "value": "{\"type\":\"doc\",\"version\":1,\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"This is a sample page.\"}]}]}",
+      "representation": "atlas_doc_format"
+    }
+  },
+  "_links": {
+    "webui": "/spaces/TEST/pages/12345/Sample+Page",
+    "editui": "/spaces/TEST/pages/edit-v2/12345",
+    "tinyui": "/x/AAAA"
+  }
+}

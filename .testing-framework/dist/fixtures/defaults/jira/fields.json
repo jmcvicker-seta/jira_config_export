@@ -1,0 +1,62 @@
+[
+  {
+    "id": "summary",
+    "key": "summary",
+    "name": "Summary",
+    "untranslatedName": "Summary",
+    "custom": false,
+    "orderable": true,
+    "navigable": true,
+    "searchable": true,
+    "clauseNames": ["summary"],
+    "schema": { "type": "string", "system": "summary" }
+  },
+  {
+    "id": "status",
+    "key": "status",
+    "name": "Status",
+    "untranslatedName": "Status",
+    "custom": false,
+    "orderable": true,
+    "navigable": true,
+    "searchable": true,
+    "clauseNames": ["status"],
+    "schema": { "type": "status", "system": "status" }
+  },
+  {
+    "id": "priority",
+    "key": "priority",
+    "name": "Priority",
+    "untranslatedName": "Priority",
+    "custom": false,
+    "orderable": true,
+    "navigable": true,
+    "searchable": true,
+    "clauseNames": ["priority"],
+    "schema": { "type": "priority", "system": "priority" }
+  },
+  {
+    "id": "assignee",
+    "key": "assignee",
+    "name": "Assignee",
+    "untranslatedName": "Assignee",
+    "custom": false,
+    "orderable": true,
+    "navigable": true,
+    "searchable": true,
+    "clauseNames": ["assignee"],
+    "schema": { "type": "user", "system": "assignee" }
+  },
+  {
+    "id": "description",
+    "key": "description",
+    "name": "Description",
+    "untranslatedName": "Description",
+    "custom": false,
+    "orderable": true,
+    "navigable": true,
+    "searchable": true,
+    "clauseNames": ["description"],
+    "schema": { "type": "string", "system": "description" }
+  }
+]

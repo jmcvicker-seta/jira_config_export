@@ -1,0 +1,49 @@
+{
+  "self": "https://test-site.atlassian.net/rest/api/3/project/search?maxResults=50&startAt=0",
+  "maxResults": 50,
+  "startAt": 0,
+  "total": 2,
+  "isLast": true,
+  "values": [
+    {
+      "expand": "description,lead,issueTypes,url,projectKeys,permissions,insight",
+      "self": "https://test-site.atlassian.net/rest/api/3/project/10000",
+      "id": "10000",
+      "key": "TEST",
+      "name": "Test Project",
+      "avatarUrls": {
+        "48x48": "https://test-site.atlassian.net/avatar/default/48",
+        "24x24": "https://test-site.atlassian.net/avatar/default/24",
+        "16x16": "https://test-site.atlassian.net/avatar/default/16",
+        "32x32": "https://test-site.atlassian.net/avatar/default/32"
+      },
+      "projectTypeKey": "software",
+      "simplified": false,
+      "style": "classic",
+      "isPrivate": false,
+      "properties": {},
+      "entityId": "test-uuid-1",
+      "uuid": "test-uuid-1"
+    },
+    {
+      "expand": "description,lead,issueTypes,url,projectKeys,permissions,insight",
+      "self": "https://test-site.atlassian.net/rest/api/3/project/10001",
+      "id": "10001",
+      "key": "DEMO",
+      "name": "Demo Project",
+      "avatarUrls": {
+        "48x48": "https://test-site.atlassian.net/avatar/default/48",
+        "24x24": "https://test-site.atlassian.net/avatar/default/24",
+        "16x16": "https://test-site.atlassian.net/avatar/default/16",
+        "32x32": "https://test-site.atlassian.net/avatar/default/32"
+      },
+      "projectTypeKey": "software",
+      "simplified": true,
+      "style": "next-gen",
+      "isPrivate": false,
+      "properties": {},
+      "entityId": "test-uuid-2",
+      "uuid": "test-uuid-2"
+    }
+  ]
+}

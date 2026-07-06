@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "self": "https://test-site.atlassian.net/rest/agile/1.0/sprint/1",
+  "state": "active",
+  "name": "Sprint 1",
+  "startDate": "2024-01-15T00:00:00.000Z",
+  "endDate": "2024-01-29T00:00:00.000Z",
+  "createdDate": "2024-01-14T10:00:00.000Z",
+  "originBoardId": 1,
+  "goal": "Complete initial features"
+}

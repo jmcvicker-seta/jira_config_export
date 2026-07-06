@@ -1,0 +1,11 @@
+{
+  "maxResults": 1000,
+  "startAt": 0,
+  "total": 3,
+  "isLast": true,
+  "values": [
+    "bug",
+    "feature",
+    "frontend"
+  ]
+}

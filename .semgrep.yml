@@ -1,0 +1,409 @@
+# SAB-503 — OWASP Top 10 SAST ruleset for Studio App Builder generated Forge apps.
+#
+# A vendored, OWASP-Top-10-aligned ruleset the dev-agent build loop scans with.
+# Rules are authored in-repo (not pulled from the Semgrep registry) so the gate
+# is deterministic and runs offline inside the sandbox.
+#
+# Coverage maps to the OWASP Top 10 (2021). Every rule carries `metadata.owasp`
+# and `metadata.cwe`. Categories that are NOT statically detectable by SAST
+# pattern matching are intentionally out of scope and documented in
+# security/semgrep-tests/README.md:
+#   A04 Insecure Design                 — architectural, not pattern-detectable
+#   A06 Vulnerable & Outdated Components — use dependency scanning (npm audit), not SAST
+#   A09 Logging & Monitoring Failures    — runtime/operational, not pattern-detectable
+#
+# Severity convention (gate behaviour: BLOCK ON HIGH-SEVERITY ONLY):
+#   ERROR   -> blocking. The `security` gate fails and the agent must fix + re-scan.
+#              High-confidence, clearly exploitable patterns only.
+#   WARNING -> advisory. Surfaced to the agent as information; does NOT fail the gate.
+#              Lower-confidence / best-practice findings.
+#
+# The dev loop runs the BLOCKING pass as:
+#   semgrep scan --config templates/app-template/.semgrep.yml --severity ERROR --error <app-src>
+# and the ADVISORY pass (all severities, never fails) as:
+#   semgrep scan --config templates/app-template/.semgrep.yml --json <app-src>
+#
+# Taint sources model user-controlled input in Forge apps:
+#   - `payload`            : resolver input  (resolver.define('x', ({ payload }) => ...))
+#   - `$X.payload`         : property access on the resolver argument
+#   - `$REQ.queryParameters` / `$REQ.body` : web-trigger / request inputs
+#
+# Run the rule unit tests with:
+#   semgrep --test --config templates/app-template/.semgrep.yml security/semgrep-tests/
+rules:
+  # ==========================================================================
+  # A01:2021 — Broken Access Control
+  # ==========================================================================
+  - id: owasp-a01-path-traversal
+    mode: taint
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A01 Broken Access Control (path traversal): user-controlled input flows
+      into a filesystem path. Normalize the path and confine it to an allowed
+      base directory before reading or writing.
+    metadata:
+      category: security
+      owasp: 'A01:2021 - Broken Access Control'
+      cwe: 'CWE-22: Improper Limitation of a Pathname to a Restricted Directory'
+      references:
+        - https://owasp.org/Top10/A01_2021-Broken_Access_Control/
+      ticket: SAB-503
+    pattern-sources:
+      - pattern: payload
+      - pattern: $X.payload
+      - pattern: $REQ.queryParameters
+      - pattern: $REQ.body
+    pattern-sinks:
+      - pattern: fs.readFile(...)
+      - pattern: fs.readFileSync(...)
+      - pattern: fs.writeFile(...)
+      - pattern: fs.writeFileSync(...)
+      - pattern: fs.appendFile(...)
+      - pattern: fs.appendFileSync(...)
+      - pattern: fs.createReadStream(...)
+      - pattern: fs.createWriteStream(...)
+
+  # --------------------------------------------------------------------------
+  - id: owasp-a01-open-redirect
+    mode: taint
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A01 Broken Access Control (open redirect): a user-controlled value flows
+      into a redirect target. Restrict redirects to an allow-list of known
+      destinations.
+    metadata:
+      category: security
+      owasp: 'A01:2021 - Broken Access Control'
+      cwe: 'CWE-601: URL Redirection to Untrusted Site (Open Redirect)'
+      references:
+        - https://owasp.org/Top10/A01_2021-Broken_Access_Control/
+      ticket: SAB-503
+    pattern-sources:
+      - pattern: payload
+      - pattern: $X.payload
+      - pattern: $REQ.queryParameters
+      - pattern: $REQ.body
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: $RES.redirect($URL, ...)
+              - pattern: $RES.redirect($URL)
+          - focus-metavariable: $URL
+
+  # ==========================================================================
+  # A02:2021 — Cryptographic Failures
+  # ==========================================================================
+  - id: owasp-a02-weak-hash
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: >-
+      A02 Cryptographic Failures: MD5/SHA-1 are cryptographically broken and
+      must not be used for passwords, signatures, or integrity checks. Use
+      SHA-256 or stronger (e.g. bcrypt/scrypt/argon2 for passwords).
+    metadata:
+      category: security
+      owasp: 'A02:2021 - Cryptographic Failures'
+      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      references:
+        - https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
+      ticket: SAB-503
+    patterns:
+      - pattern-either:
+          - pattern: crypto.createHash("md5")
+          - pattern: crypto.createHash("sha1")
+          - pattern: $C.createHash("md5")
+          - pattern: $C.createHash("sha1")
+
+  # --------------------------------------------------------------------------
+  - id: owasp-a02-insecure-randomness
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: >-
+      A02 Cryptographic Failures: Math.random() is not cryptographically secure
+      and must not be used to generate tokens, secrets, keys, or session ids.
+      Use crypto.randomBytes() / crypto.randomUUID() instead.
+    metadata:
+      category: security
+      owasp: 'A02:2021 - Cryptographic Failures'
+      cwe: 'CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)'
+      references:
+        - https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
+      ticket: SAB-503
+    patterns:
+      - pattern: Math.random()
+      - pattern-either:
+          - pattern-inside: $NAME = ...
+          - pattern-inside: '$NAME: ...'
+      - metavariable-regex:
+          metavariable: $NAME
+          regex: (?i).*(token|secret|password|passwd|key|nonce|salt|otp|session|csrf)$
+
+  # --------------------------------------------------------------------------
+  - id: owasp-a02-jwt-none-algorithm
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A02 Cryptographic Failures: the JWT "none" algorithm disables signature
+      verification and lets anyone forge tokens. Pin an explicit signing
+      algorithm (e.g. HS256/RS256) and never accept "none".
+    metadata:
+      category: security
+      owasp: 'A02:2021 - Cryptographic Failures'
+      cwe: 'CWE-347: Improper Verification of Cryptographic Signature'
+      references:
+        - https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
+      ticket: SAB-503
+    patterns:
+      - pattern-regex: (?i)algorithms?\s*:\s*(\[[^\]]*)?["']none["']
+
+  # ==========================================================================
+  # A03:2021 — Injection
+  # ==========================================================================
+  - id: owasp-a03-sql-injection
+    mode: taint
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A03 Injection (SQL): user-controlled input is concatenated into a SQL
+      statement. Use parameterised queries instead of string concatenation.
+    metadata:
+      category: security
+      owasp: 'A03:2021 - Injection'
+      cwe: 'CWE-89: Improper Neutralization of Special Elements used in an SQL Command'
+      references:
+        - https://owasp.org/Top10/A03_2021-Injection/
+      ticket: SAB-503
+    pattern-sources:
+      - pattern: payload
+      - pattern: $X.payload
+      - pattern: $REQ.queryParameters
+      - pattern: $REQ.body
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: $DB.query($Q, ...)
+              - pattern: $DB.query($Q)
+              - pattern: $DB.execute($Q, ...)
+              - pattern: $DB.execute($Q)
+              - pattern: $DB.raw($Q, ...)
+              - pattern: $DB.raw($Q)
+          # Focus only on the statement string — a value passed in the
+          # parameters array (2nd arg) is the SAFE, parameterised path.
+          - focus-metavariable: $Q
+
+  # --------------------------------------------------------------------------
+  - id: owasp-a03-command-injection
+    mode: taint
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A03 Injection (OS command): user-controlled input flows into a shell
+      command. Avoid the shell; use execFile/spawn with an argument array and
+      validate inputs against an allow-list.
+    metadata:
+      category: security
+      owasp: 'A03:2021 - Injection'
+      cwe: 'CWE-78: Improper Neutralization of Special Elements used in an OS Command'
+      references:
+        - https://owasp.org/Top10/A03_2021-Injection/
+      ticket: SAB-503
+    pattern-sources:
+      - pattern: payload
+      - pattern: $X.payload
+      - pattern: $REQ.queryParameters
+      - pattern: $REQ.body
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: $CP.exec($CMD, ...)
+              - pattern: $CP.execSync($CMD, ...)
+              - pattern: $CP.spawn($CMD, ...)
+              - pattern: $CP.spawnSync($CMD, ...)
+              - pattern: exec($CMD, ...)
+              - pattern: execSync($CMD, ...)
+          - focus-metavariable: $CMD
+
+  # --------------------------------------------------------------------------
+  - id: owasp-a03-code-injection
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A03 Injection (code): dynamic code evaluation (eval / new Function /
+      string-form setTimeout|setInterval) executes arbitrary code and is almost
+      never necessary. Remove it and use a safe alternative.
+    metadata:
+      category: security
+      owasp: 'A03:2021 - Injection'
+      cwe: 'CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code (Eval Injection)'
+      references:
+        - https://owasp.org/Top10/A03_2021-Injection/
+      ticket: SAB-503
+    patterns:
+      - pattern-either:
+          - pattern: eval(...)
+          - pattern: new Function(...)
+          - pattern: setTimeout("...", ...)
+          - pattern: setInterval("...", ...)
+
+  # --------------------------------------------------------------------------
+  - id: owasp-a03-xss-dangerously-set-inner-html
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A03 Injection (XSS): a non-literal value is rendered via
+      dangerouslySetInnerHTML, which bypasses React's escaping. Render text as
+      children, or sanitise the HTML (e.g. DOMPurify) before injecting it.
+    metadata:
+      category: security
+      owasp: 'A03:2021 - Injection'
+      cwe: 'CWE-79: Improper Neutralization of Input During Web Page Generation (Cross-site Scripting)'
+      references:
+        - https://owasp.org/Top10/A03_2021-Injection/
+      ticket: SAB-503
+    patterns:
+      - pattern: '<$EL ... dangerouslySetInnerHTML={{ __html: $HTML }} ... />'
+      # A constant HTML string is safe; only flag a non-literal (e.g. a variable).
+      - metavariable-pattern:
+          metavariable: $HTML
+          patterns:
+            - pattern-not: '"..."'
+            - pattern-not: '`...`'
+
+  # ==========================================================================
+  # A05:2021 — Security Misconfiguration
+  # ==========================================================================
+  - id: owasp-a05-disabled-tls-verification
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A05 Security Misconfiguration: TLS certificate verification is disabled
+      (rejectUnauthorized:false / NODE_TLS_REJECT_UNAUTHORIZED=0), exposing
+      traffic to man-in-the-middle attacks. Never disable certificate validation.
+    metadata:
+      category: security
+      owasp: 'A05:2021 - Security Misconfiguration'
+      cwe: 'CWE-295: Improper Certificate Validation'
+      references:
+        - https://owasp.org/Top10/A05_2021-Security_Misconfiguration/
+      ticket: SAB-503
+    patterns:
+      - pattern-either:
+          - pattern: 'rejectUnauthorized: false'
+          - pattern: process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+          - pattern: process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
+  # --------------------------------------------------------------------------
+  - id: owasp-a05-cors-wildcard
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: >-
+      A05 Security Misconfiguration: a wildcard CORS origin ("*") allows any
+      site to read responses. Echo back only an allow-listed origin instead.
+    metadata:
+      category: security
+      owasp: 'A05:2021 - Security Misconfiguration'
+      cwe: 'CWE-942: Permissive Cross-domain Policy with Untrusted Domains'
+      references:
+        - https://owasp.org/Top10/A05_2021-Security_Misconfiguration/
+      ticket: SAB-503
+    patterns:
+      - pattern-either:
+          - pattern: $H["Access-Control-Allow-Origin"] = "*"
+          - pattern: $H['Access-Control-Allow-Origin'] = '*'
+          - pattern: '{ ..., "Access-Control-Allow-Origin": "*", ... }'
+
+  # ==========================================================================
+  # A07:2021 — Identification and Authentication Failures
+  # ==========================================================================
+  - id: owasp-a07-hardcoded-secret
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A07 Identification & Authentication Failures: a hardcoded secret or
+      credential was detected. Forge apps must not embed secrets in source. Use
+      Forge environment variables (`forge variables set --encrypt`) or the Forge
+      storage API instead.
+    metadata:
+      category: security
+      owasp: 'A07:2021 - Identification and Authentication Failures'
+      cwe: 'CWE-798: Use of Hard-coded Credentials'
+      references:
+        - https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/
+      ticket: SAB-503
+    patterns:
+      - pattern-either:
+          # Assignment / declaration with a string literal value. `$NAME = "..."`
+          # also matches `const|let|var $NAME = "..."`, so no separate variants
+          # are needed (they would double-report the same line).
+          - pattern: $NAME = "..."
+          - pattern: $NAME = `...`
+          # Object property with a string literal value.
+          - pattern: '$NAME: "..."'
+          - pattern: '$NAME: `...`'
+      - metavariable-regex:
+          metavariable: $NAME
+          regex: (?i).*(api[_-]?key|secret|token|password|passwd|client[_-]?secret|private[_-]?key|access[_-]?key|auth)$
+
+  # ==========================================================================
+  # A08:2021 — Software and Data Integrity Failures
+  # ==========================================================================
+  - id: owasp-a08-dynamic-require
+    mode: taint
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: >-
+      A08 Software & Data Integrity Failures: a user-controlled value flows into
+      a module loader (require/import). Loading code chosen at runtime by an
+      attacker can execute arbitrary code. Load only from a fixed allow-list.
+    metadata:
+      category: security
+      owasp: 'A08:2021 - Software and Data Integrity Failures'
+      cwe: 'CWE-829: Inclusion of Functionality from Untrusted Control Sphere'
+      references:
+        - https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/
+      ticket: SAB-503
+    pattern-sources:
+      - pattern: payload
+      - pattern: $X.payload
+      - pattern: $REQ.queryParameters
+      - pattern: $REQ.body
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: require($M)
+              - pattern: import($M)
+          - focus-metavariable: $M
+
+  # ==========================================================================
+  # A10:2021 — Server-Side Request Forgery (SSRF)
+  # ==========================================================================
+  - id: owasp-a10-ssrf
+    mode: taint
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      A10 Server-Side Request Forgery (SSRF): a user-controlled value flows into
+      the URL of an outbound request. Validate and allow-list the destination
+      host before calling fetch.
+    metadata:
+      category: security
+      owasp: 'A10:2021 - Server-Side Request Forgery (SSRF)'
+      cwe: 'CWE-918: Server-Side Request Forgery (SSRF)'
+      references:
+        - https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/
+      ticket: SAB-503
+    pattern-sources:
+      - pattern: payload
+      - pattern: $X.payload
+      - pattern: $REQ.queryParameters
+      - pattern: $REQ.body
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: fetch($URL, ...)
+              - pattern: fetch($URL)
+              - pattern: $API.fetch($URL, ...)
+              - pattern: $API.fetch($URL)
+          - focus-metavariable: $URL

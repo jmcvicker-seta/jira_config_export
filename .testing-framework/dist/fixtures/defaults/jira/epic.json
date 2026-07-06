@@ -1,0 +1,14 @@
+{
+  "id": 10000,
+  "key": "TEST-1",
+  "self": "https://test-site.atlassian.net/rest/agile/1.0/epic/10000",
+  "name": "Sample Epic",
+  "summary": "Sample epic summary",
+  "color": {
+    "key": "color_1"
+  },
+  "issueColor": {
+    "key": "dark_grey"
+  },
+  "done": false
+}

@@ -1,0 +1,30 @@
+{
+  "header": "Showing 2 of 2 matching groups",
+  "total": 2,
+  "groups": [
+    {
+      "name": "jira-users",
+      "html": "jira-users",
+      "labels": [
+        {
+          "text": "Jira Software",
+          "title": "Users added to this group will be given access to <strong>Jira Software</strong>",
+          "type": "SINGLE"
+        }
+      ],
+      "groupId": "test-group-id-1"
+    },
+    {
+      "name": "jira-admins",
+      "html": "jira-admins",
+      "labels": [
+        {
+          "text": "Admin",
+          "title": "Users added to this group will be given administrative access",
+          "type": "ADMIN"
+        }
+      ],
+      "groupId": "test-group-id-2"
+    }
+  ]
+}

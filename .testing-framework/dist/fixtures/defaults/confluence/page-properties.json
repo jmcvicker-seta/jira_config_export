@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "id": "10000",
+      "key": "test-property",
+      "version": {
+        "number": 1,
+        "message": "",
+        "minorEdit": false,
+        "authorId": "test-account-id",
+        "createdAt": "2024-01-15T10:30:00.000Z"
+      },
+      "value": {
+        "color": "blue",
+        "count": 42
+      }
+    }
+  ],
+  "_links": {
+    "base": "https://test-site.atlassian.net/wiki"
+  }
+}

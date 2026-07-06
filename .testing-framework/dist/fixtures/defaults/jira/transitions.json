@@ -1,0 +1,49 @@
+{
+  "transitions": [
+    {
+      "id": "11",
+      "name": "To Do",
+      "to": {
+        "self": "https://test-site.atlassian.net/rest/api/3/status/10000",
+        "id": "10000",
+        "name": "To Do",
+        "statusCategory": {
+          "id": 2,
+          "key": "new",
+          "name": "To Do",
+          "colorName": "blue-gray"
+        }
+      }
+    },
+    {
+      "id": "21",
+      "name": "In Progress",
+      "to": {
+        "self": "https://test-site.atlassian.net/rest/api/3/status/10001",
+        "id": "10001",
+        "name": "In Progress",
+        "statusCategory": {
+          "id": 4,
+          "key": "indeterminate",
+          "name": "In Progress",
+          "colorName": "yellow"
+        }
+      }
+    },
+    {
+      "id": "31",
+      "name": "Done",
+      "to": {
+        "self": "https://test-site.atlassian.net/rest/api/3/status/10002",
+        "id": "10002",
+        "name": "Done",
+        "statusCategory": {
+          "id": 3,
+          "key": "done",
+          "name": "Done",
+          "colorName": "green"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parentType": "page",
+  "parentId": "10001",
+  "spaceId": "10001",
+  "ownerId": "test-account-id",
+  "createdAt": "2024-01-15T10:00:00.000Z",
+  "lastOwnerId": null,
+  "authorId": "test-account-id",
+  "position": 100,
+  "version": {
+    "number": 1,
+    "message": "",
+    "minorEdit": false,
+    "authorId": "test-account-id",
+    "createdAt": "2024-01-15T10:00:00.000Z"
+  },
+  "status": "current",
+  "body": {
+    "storage": {
+      "representation": "storage",
+      "value": "<p>This is the page content.</p>"
+    }
+  },
+  "title": "Test Page",
+  "id": "10002",
+  "_links": {
+    "editui": "/pages/resumedraft.action?draftId=10002",
+    "webui": "/spaces/TEST/pages/10002/Test+Page",
+    "tinyui": "/x/AQAB",
+    "base": "https://test.atlassian.net/wiki"
+  }
+}

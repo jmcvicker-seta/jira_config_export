@@ -1,0 +1,31 @@
+{
+  "size": 1,
+  "start": 0,
+  "limit": 50,
+  "isLastPage": true,
+  "_links": {
+    "self": "https://test-site.atlassian.net/rest/servicedeskapi/servicedesk/1/queue",
+    "base": "https://test-site.atlassian.net",
+    "context": ""
+  },
+  "values": [
+    {
+      "id": "1",
+      "name": "All open",
+      "jql": "project = ITSM AND resolution = Unresolved ORDER BY created DESC",
+      "fields": [
+        "issuetype",
+        "issuekey",
+        "summary",
+        "reporter",
+        "assignee",
+        "status",
+        "created"
+      ],
+      "_links": {
+        "issues": "https://test-site.atlassian.net/rest/servicedeskapi/servicedesk/1/queue/1/issue",
+        "self": "https://test-site.atlassian.net/rest/servicedeskapi/servicedesk/1/queue/1"
+      }
+    }
+  ]
+}

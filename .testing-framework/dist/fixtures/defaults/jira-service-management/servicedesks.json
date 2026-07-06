@@ -1,0 +1,23 @@
+{
+  "size": 1,
+  "start": 0,
+  "limit": 50,
+  "isLastPage": true,
+  "_links": {
+    "self": "https://test-site.atlassian.net/rest/servicedeskapi/servicedesk",
+    "base": "https://test-site.atlassian.net",
+    "context": ""
+  },
+  "values": [
+    {
+      "id": "1",
+      "projectId": "10000",
+      "projectName": "IT Service Management",
+      "projectKey": "ITSM",
+      "projectTypeKey": "service_desk",
+      "_links": {
+        "self": "https://test-site.atlassian.net/rest/servicedeskapi/servicedesk/1"
+      }
+    }
+  ]
+}
