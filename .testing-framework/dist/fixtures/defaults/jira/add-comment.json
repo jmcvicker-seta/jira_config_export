@@ -1,0 +1,52 @@
+{
+  "self": "https://test.atlassian.net/rest/api/3/issue/10001/comment/10001",
+  "id": "10001",
+  "author": {
+    "self": "https://test.atlassian.net/rest/api/3/user?accountId=test-account-id",
+    "accountId": "test-account-id",
+    "emailAddress": "test@example.com",
+    "avatarUrls": {
+      "48x48": "https://avatar-management.atlassian.net/default/48.png",
+      "24x24": "https://avatar-management.atlassian.net/default/24.png",
+      "16x16": "https://avatar-management.atlassian.net/default/16.png",
+      "32x32": "https://avatar-management.atlassian.net/default/32.png"
+    },
+    "displayName": "Test User",
+    "active": true,
+    "timeZone": "UTC",
+    "accountType": "atlassian"
+  },
+  "body": {
+    "type": "doc",
+    "version": 1,
+    "content": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "type": "text",
+            "text": "This is a test comment."
+          }
+        ]
+      }
+    ]
+  },
+  "updateAuthor": {
+    "self": "https://test.atlassian.net/rest/api/3/user?accountId=test-account-id",
+    "accountId": "test-account-id",
+    "emailAddress": "test@example.com",
+    "avatarUrls": {
+      "48x48": "https://avatar-management.atlassian.net/default/48.png",
+      "24x24": "https://avatar-management.atlassian.net/default/24.png",
+      "16x16": "https://avatar-management.atlassian.net/default/16.png",
+      "32x32": "https://avatar-management.atlassian.net/default/32.png"
+    },
+    "displayName": "Test User",
+    "active": true,
+    "timeZone": "UTC",
+    "accountType": "atlassian"
+  },
+  "created": "2024-01-15T10:00:00.000+0000",
+  "updated": "2024-01-15T10:00:00.000+0000",
+  "jsdPublic": true
+}

@@ -1,0 +1,23 @@
+/**
+ * Error types matching @forge/kvs error shapes.
+ */
+export interface ForgeError {
+    code: string;
+    message: string;
+    context?: Record<string, unknown>;
+}
+export interface APIErrorResponseDetails {
+    status: number;
+    statusText: string;
+    traceId?: string | null;
+}
+export declare class ForgeKvsError extends Error {
+    constructor(message: string);
+}
+export declare class ForgeKvsAPIError extends ForgeKvsError {
+    responseDetails: APIErrorResponseDetails;
+    code: string;
+    message: string;
+    context: Record<string, unknown>;
+    constructor(responseDetails: APIErrorResponseDetails, forgeError: ForgeError);
+}

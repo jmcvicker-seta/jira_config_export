@@ -1,0 +1,61 @@
+{
+  "expand": "schema,names",
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 1,
+  "issues": [
+    {
+      "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+      "id": "10001",
+      "self": "https://test-site.atlassian.net/rest/agile/1.0/issue/10001",
+      "key": "TEST-1",
+      "fields": {
+        "summary": "Sample sprint issue",
+        "issuetype": {
+          "self": "https://test-site.atlassian.net/rest/api/2/issuetype/10036",
+          "id": "10036",
+          "description": "Stories track functionality or features expressed as user goals.",
+          "iconUrl": "https://test-site.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10300?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "hierarchyLevel": 0
+        },
+        "status": {
+          "self": "https://test-site.atlassian.net/rest/api/2/status/10000",
+          "id": "10000",
+          "name": "To Do",
+          "statusCategory": {
+            "self": "https://test-site.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "self": "https://test-site.atlassian.net/rest/api/2/priority/3",
+          "id": "3",
+          "name": "Medium",
+          "iconUrl": "https://test-site.atlassian.net/images/icons/priorities/medium.svg"
+        },
+        "sprint": {
+          "id": 1,
+          "self": "https://test-site.atlassian.net/rest/agile/1.0/sprint/1",
+          "state": "active",
+          "name": "Sprint 1",
+          "startDate": "2024-01-15T00:00:00.000Z",
+          "endDate": "2024-01-29T00:00:00.000Z",
+          "originBoardId": 1,
+          "goal": "Complete initial features"
+        },
+        "project": {
+          "self": "https://test-site.atlassian.net/rest/api/2/project/10000",
+          "id": "10000",
+          "key": "TEST",
+          "name": "Test Project",
+          "projectTypeKey": "software"
+        }
+      }
+    }
+  ]
+}

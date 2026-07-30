@@ -1,0 +1,30 @@
+{
+  "startAt": 0,
+  "maxResults": 50,
+  "total": 1,
+  "comments": [
+    {
+      "id": "10000",
+      "self": "https://test-site.atlassian.net/rest/api/3/issue/10001/comment/10000",
+      "author": {
+        "accountId": "test-account-id",
+        "displayName": "Test User",
+        "active": true
+      },
+      "body": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              { "type": "text", "text": "This is a sample comment." }
+            ]
+          }
+        ]
+      },
+      "created": "2024-01-15T12:00:00.000+0000",
+      "updated": "2024-01-15T12:00:00.000+0000"
+    }
+  ]
+}

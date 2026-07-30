@@ -1,0 +1,31 @@
+{
+  "issues": [
+    {
+      "id": "10001",
+      "key": "TEST-1",
+      "self": "https://test-site.atlassian.net/rest/api/3/issue/10001",
+      "fields": {
+        "summary": "Sample issue summary",
+        "issuetype": {
+          "id": "10001",
+          "name": "Task",
+          "subtask": false
+        },
+        "status": {
+          "id": "10000",
+          "name": "To Do",
+          "statusCategory": {
+            "id": 2,
+            "key": "new",
+            "name": "To Do"
+          }
+        },
+        "priority": {
+          "id": "3",
+          "name": "Medium"
+        }
+      }
+    }
+  ],
+  "isLast": true
+}

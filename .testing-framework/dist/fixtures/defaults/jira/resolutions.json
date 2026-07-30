@@ -1,0 +1,8 @@
+[
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/resolution/10000",
+    "id": "10000",
+    "description": "Work has been completed on this issue.",
+    "name": "Done"
+  }
+]

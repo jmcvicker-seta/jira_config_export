@@ -1,0 +1,24 @@
+{
+  "maxResults": 50,
+  "startAt": 0,
+  "total": 1,
+  "isLast": true,
+  "values": [
+    {
+      "id": 1,
+      "self": "https://test-site.atlassian.net/rest/agile/1.0/board/1",
+      "name": "TEST board",
+      "type": "scrum",
+      "location": {
+        "projectId": 10000,
+        "displayName": "Test Project (TEST)",
+        "projectName": "Test Project",
+        "projectKey": "TEST",
+        "projectTypeKey": "software",
+        "avatarURI": "https://test-site.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10412?size=small",
+        "name": "Test Project (TEST)"
+      },
+      "isPrivate": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "12345",
+  "status": "current",
+  "title": "Sample Blog Post",
+  "spaceId": "65536",
+  "authorId": "test-account-id",
+  "createdAt": "2024-01-15T10:30:00.000Z",
+  "version": {
+    "number": 1,
+    "message": "",
+    "minorEdit": false,
+    "authorId": "test-account-id",
+    "createdAt": "2024-01-15T10:30:00.000Z"
+  },
+  "body": {
+    "atlas_doc_format": {
+      "representation": "atlas_doc_format",
+      "value": "{\"type\":\"doc\",\"version\":1,\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"This is a sample blog post.\"}]}]}"
+    }
+  },
+  "_links": {
+    "editui": "/pages/resumedraft.action?draftId=12345",
+    "webui": "/spaces/TEST/blog/2024/01/15/12345/Sample+Blog+Post",
+    "tinyui": "/x/AAAA",
+    "base": "https://test-site.atlassian.net/wiki"
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/status/10000",
+    "description": "",
+    "iconUrl": "https://test-site.atlassian.net/images/icons/statuses/open.png",
+    "name": "To Do",
+    "untranslatedName": "To Do",
+    "id": "10000",
+    "statusCategory": {
+      "self": "https://test-site.atlassian.net/rest/api/3/statuscategory/2",
+      "id": 2,
+      "key": "new",
+      "colorName": "blue-gray",
+      "name": "To Do"
+    },
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  },
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/status/10001",
+    "description": "This issue is being actively worked on.",
+    "iconUrl": "https://test-site.atlassian.net/images/icons/statuses/inprogress.png",
+    "name": "In Progress",
+    "untranslatedName": "In Progress",
+    "id": "10001",
+    "statusCategory": {
+      "self": "https://test-site.atlassian.net/rest/api/3/statuscategory/4",
+      "id": 4,
+      "key": "indeterminate",
+      "colorName": "yellow",
+      "name": "In Progress"
+    },
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  },
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/status/10002",
+    "description": "Work has been completed.",
+    "iconUrl": "https://test-site.atlassian.net/images/icons/statuses/closed.png",
+    "name": "Done",
+    "untranslatedName": "Done",
+    "id": "10002",
+    "statusCategory": {
+      "self": "https://test-site.atlassian.net/rest/api/3/statuscategory/3",
+      "id": 3,
+      "key": "done",
+      "colorName": "green",
+      "name": "Done"
+    },
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  }
+]

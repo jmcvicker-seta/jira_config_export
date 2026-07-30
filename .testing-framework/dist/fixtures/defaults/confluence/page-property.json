@@ -1,0 +1,12 @@
+{
+  "id": "12345",
+  "key": "example-property",
+  "value": {},
+  "version": {
+    "number": 1,
+    "message": "",
+    "minorEdit": false,
+    "authorId": "user-123",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "expand": "description,lead,issueTypes,url,projectKeys,permissions,insight",
+  "self": "https://test-site.atlassian.net/rest/api/3/project/10000",
+  "id": "10000",
+  "key": "TEST",
+  "name": "Test Project",
+  "description": "",
+  "lead": {
+    "self": "https://test-site.atlassian.net/rest/api/3/user?accountId=test-account-id",
+    "accountId": "test-account-id",
+    "avatarUrls": {
+      "48x48": "https://test-site.atlassian.net/avatar/default/48",
+      "24x24": "https://test-site.atlassian.net/avatar/default/24",
+      "16x16": "https://test-site.atlassian.net/avatar/default/16",
+      "32x32": "https://test-site.atlassian.net/avatar/default/32"
+    },
+    "displayName": "Test User",
+    "active": true
+  },
+  "components": [],
+  "issueTypes": [
+    {
+      "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10001",
+      "id": "10001",
+      "description": "Tasks track small, distinct pieces of work.",
+      "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10318",
+      "name": "Task",
+      "subtask": false,
+      "avatarId": 10318,
+      "hierarchyLevel": 0
+    },
+    {
+      "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10002",
+      "id": "10002",
+      "description": "Stories track functionality or features expressed as user goals.",
+      "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10315",
+      "name": "Story",
+      "subtask": false,
+      "avatarId": 10315,
+      "hierarchyLevel": 0
+    },
+    {
+      "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10003",
+      "id": "10003",
+      "description": "Bugs track problems or errors.",
+      "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10303",
+      "name": "Bug",
+      "subtask": false,
+      "avatarId": 10303,
+      "hierarchyLevel": 0
+    }
+  ],
+  "assigneeType": "UNASSIGNED",
+  "versions": [],
+  "roles": {},
+  "projectTypeKey": "software",
+  "simplified": false,
+  "style": "classic",
+  "isPrivate": false,
+  "properties": {},
+  "entityId": "test-uuid",
+  "uuid": "test-uuid",
+  "avatarUrls": {
+    "48x48": "https://test-site.atlassian.net/avatar/default/48",
+    "24x24": "https://test-site.atlassian.net/avatar/default/24",
+    "16x16": "https://test-site.atlassian.net/avatar/default/16",
+    "32x32": "https://test-site.atlassian.net/avatar/default/32"
+  }
+}

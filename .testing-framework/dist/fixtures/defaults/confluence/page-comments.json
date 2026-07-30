@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "id": "10000",
+      "status": "current",
+      "title": "Re: Sample Page",
+      "pageId": "12345",
+      "version": {
+        "number": 1,
+        "message": "",
+        "minorEdit": false,
+        "authorId": "test-account-id",
+        "createdAt": "2024-01-15T12:00:00.000Z"
+      },
+      "body": {
+        "storage": {
+          "representation": "storage",
+          "value": "<p>This is a sample comment.</p>"
+        }
+      },
+      "_links": {
+        "webui": "/spaces/TEST/pages/12345/Sample+Page?focusedCommentId=10000"
+      }
+    }
+  ],
+  "_links": {
+    "base": "https://test-site.atlassian.net/wiki"
+  }
+}

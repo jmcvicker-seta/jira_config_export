@@ -1,0 +1,72 @@
+{
+  "id": "10001",
+  "key": "TEST-1",
+  "self": "https://test-site.atlassian.net/rest/api/3/issue/10001",
+  "fields": {
+    "summary": "Sample issue summary",
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            { "type": "text", "text": "This is a sample issue description." }
+          ]
+        }
+      ]
+    },
+    "issuetype": {
+      "id": "10001",
+      "name": "Task",
+      "subtask": false,
+      "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10318",
+      "hierarchyLevel": 0
+    },
+    "project": {
+      "id": "10000",
+      "key": "TEST",
+      "name": "Test Project",
+      "self": "https://test-site.atlassian.net/rest/api/3/project/10000"
+    },
+    "status": {
+      "id": "10000",
+      "name": "To Do",
+      "statusCategory": {
+        "id": 2,
+        "key": "new",
+        "name": "To Do",
+        "colorName": "blue-gray"
+      }
+    },
+    "priority": {
+      "id": "3",
+      "name": "Medium",
+      "iconUrl": "https://test-site.atlassian.net/images/icons/priorities/medium.svg"
+    },
+    "assignee": {
+      "accountId": "test-account-id",
+      "displayName": "Test User",
+      "emailAddress": "user@example.com",
+      "active": true
+    },
+    "reporter": {
+      "accountId": "test-account-id",
+      "displayName": "Test User",
+      "emailAddress": "user@example.com",
+      "active": true
+    },
+    "labels": [],
+    "created": "2024-01-15T10:30:00.000+0000",
+    "updated": "2024-01-16T14:20:00.000+0000",
+    "components": [],
+    "fixVersions": [],
+    "versions": [],
+    "comment": {
+      "comments": [],
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "baseUrl": "https://test-site.atlassian.net",
+  "version": "1001.0.0-SNAPSHOT",
+  "versionNumbers": [1001, 0, 0],
+  "deploymentType": "Cloud",
+  "buildNumber": 100000,
+  "buildDate": "2024-01-15T00:00:00.000+0000",
+  "serverTime": "2024-01-15T10:30:00.000+0000",
+  "scmInfo": "test",
+  "serverTitle": "Test Site",
+  "defaultLocale": { "locale": "en_US" }
+}

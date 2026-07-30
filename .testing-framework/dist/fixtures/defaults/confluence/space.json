@@ -1,0 +1,22 @@
+{
+  "id": "65536",
+  "key": "TEST",
+  "name": "Test Space",
+  "type": "global",
+  "status": "current",
+  "authorId": "test-account-id",
+  "createdAt": "2024-01-15T10:30:00.000Z",
+  "homepageId": "12345",
+  "icon": null,
+  "currentActiveAlias": null,
+  "spaceOwnerId": "test-account-id",
+  "description": {
+    "plain": {
+      "value": "A sample Confluence space for testing.",
+      "representation": "plain"
+    }
+  },
+  "_links": {
+    "webui": "/spaces/TEST"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "size": 1,
+  "start": 0,
+  "limit": 50,
+  "isLastPage": true,
+  "_links": {
+    "self": "https://test-site.atlassian.net/rest/servicedeskapi/organization",
+    "base": "https://test-site.atlassian.net",
+    "context": ""
+  },
+  "values": [
+    {
+      "id": "1",
+      "name": "Acme Corporation",
+      "created": {
+        "iso8601": "2024-01-15T10:30:00+0000",
+        "jira": "2024-01-15T10:30:00.000+0000",
+        "friendly": "15/Jan/24 10:30 AM",
+        "epochMillis": 1705311000000
+      },
+      "_links": {
+        "self": "https://test-site.atlassian.net/rest/servicedeskapi/organization/1"
+      }
+    }
+  ]
+}

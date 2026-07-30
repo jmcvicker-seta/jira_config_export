@@ -1,0 +1,32 @@
+{
+  "parentType": "page",
+  "parentId": "10001",
+  "ownerId": "test-account-id",
+  "createdAt": "2024-01-15T10:00:00.000Z",
+  "lastOwnerId": null,
+  "authorId": "test-account-id",
+  "position": 100,
+  "version": {
+    "number": 2,
+    "message": "Updated",
+    "minorEdit": false,
+    "authorId": "test-account-id",
+    "createdAt": "2024-01-15T11:00:00.000Z"
+  },
+  "id": "10002",
+  "status": "current",
+  "body": {
+    "storage": {
+      "representation": "storage",
+      "value": "<p>Updated page content.</p>"
+    }
+  },
+  "spaceId": "10001",
+  "title": "Updated Test Page",
+  "_links": {
+    "editui": "/pages/resumedraft.action?draftId=10002",
+    "webui": "/spaces/TEST/pages/10002/Updated+Test+Page",
+    "tinyui": "/x/AQAB",
+    "base": "https://test.atlassian.net/wiki"
+  }
+}

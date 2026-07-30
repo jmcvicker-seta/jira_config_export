@@ -1,0 +1,62 @@
+[
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10001",
+    "id": "10001",
+    "description": "Tasks track small, distinct pieces of work.",
+    "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10318",
+    "name": "Task",
+    "untranslatedName": "Task",
+    "subtask": false,
+    "avatarId": 10318,
+    "hierarchyLevel": 0,
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  },
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10002",
+    "id": "10002",
+    "description": "Stories track functionality or features expressed as user goals.",
+    "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10315",
+    "name": "Story",
+    "untranslatedName": "Story",
+    "subtask": false,
+    "avatarId": 10315,
+    "hierarchyLevel": 0,
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  },
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10003",
+    "id": "10003",
+    "description": "Bugs track problems or errors.",
+    "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10303",
+    "name": "Bug",
+    "untranslatedName": "Bug",
+    "subtask": false,
+    "avatarId": 10303,
+    "hierarchyLevel": 0,
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  },
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10004",
+    "id": "10004",
+    "description": "Subtasks track small pieces of work that are part of a larger task.",
+    "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10316",
+    "name": "Sub-task",
+    "untranslatedName": "Sub-task",
+    "subtask": true,
+    "avatarId": 10316,
+    "hierarchyLevel": -1,
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  },
+  {
+    "self": "https://test-site.atlassian.net/rest/api/3/issuetype/10000",
+    "id": "10000",
+    "description": "A big user story that needs to be broken down.",
+    "iconUrl": "https://test-site.atlassian.net/rest/api/3/universal_avatar/view/type/issuetype/avatar/10307",
+    "name": "Epic",
+    "untranslatedName": "Epic",
+    "subtask": false,
+    "avatarId": 10307,
+    "hierarchyLevel": 1,
+    "scope": { "type": "PROJECT", "project": { "id": "10000" } }
+  }
+]

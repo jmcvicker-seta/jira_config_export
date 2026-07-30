@@ -1,0 +1,22 @@
+[
+  {
+    "expand": "description,lead,issueTypes,url,projectKeys,permissions,insight",
+    "self": "https://test-site.atlassian.net/rest/api/3/project/10000",
+    "id": "10000",
+    "key": "TEST",
+    "name": "Test Project",
+    "avatarUrls": {
+      "48x48": "https://test-site.atlassian.net/avatar/default/48",
+      "24x24": "https://test-site.atlassian.net/avatar/default/24",
+      "16x16": "https://test-site.atlassian.net/avatar/default/16",
+      "32x32": "https://test-site.atlassian.net/avatar/default/32"
+    },
+    "projectTypeKey": "software",
+    "simplified": false,
+    "style": "classic",
+    "isPrivate": false,
+    "properties": {},
+    "entityId": "test-uuid",
+    "uuid": "test-uuid"
+  }
+]

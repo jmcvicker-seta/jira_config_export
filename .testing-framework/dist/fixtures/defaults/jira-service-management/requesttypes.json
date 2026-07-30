@@ -1,0 +1,44 @@
+{
+  "size": 1,
+  "start": 0,
+  "limit": 50,
+  "isLastPage": true,
+  "_links": {
+    "self": "https://test-site.atlassian.net/rest/servicedeskapi/servicedesk/1/requesttype",
+    "base": "https://test-site.atlassian.net",
+    "context": ""
+  },
+  "values": [
+    {
+      "_expands": [
+        "field"
+      ],
+      "id": "1",
+      "_links": {
+        "self": "https://test-site.atlassian.net/rest/servicedeskapi/servicedesk/1/requesttype/1"
+      },
+      "name": "Get IT help",
+      "description": "Get assistance for general IT problems and questions.",
+      "helpText": "",
+      "issueTypeId": "10001",
+      "serviceDeskId": "1",
+      "portalId": "1",
+      "groupIds": [
+        "1"
+      ],
+      "icon": {
+        "id": "10000",
+        "_links": {
+          "iconUrls": {
+            "48x48": "https://test-site.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10000?size=large",
+            "24x24": "https://test-site.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10000?size=small",
+            "16x16": "https://test-site.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10000?size=xsmall",
+            "32x32": "https://test-site.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10000?size=medium"
+          }
+        }
+      },
+      "restrictionStatus": "OPEN",
+      "canCreateRequest": true
+    }
+  ]
+}

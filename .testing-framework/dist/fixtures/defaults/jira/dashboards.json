@@ -1,0 +1,21 @@
+{
+  "startAt": 0,
+  "maxResults": 20,
+  "total": 1,
+  "dashboards": [
+    {
+      "id": "10000",
+      "isFavourite": false,
+      "name": "Default dashboard",
+      "popularity": 0,
+      "self": "https://test-site.atlassian.net/rest/api/3/dashboard/10000",
+      "sharePermissions": [
+        { "id": 10000, "type": "loggedin" }
+      ],
+      "editPermissions": [],
+      "view": "/jira/dashboards/10000",
+      "isWritable": true,
+      "systemDashboard": true
+    }
+  ]
+}
